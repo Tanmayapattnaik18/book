@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .book-info {
+            border: 1px solid #ccc;
+            margin: 10px;
+            padding: 10px;
+            display: inline-block;
+        }
+    </style>
+    <title>Book</title>
+</head>
+<body>
+    <h1>Online Bookstore</h1>
+
+    <script>
+        function Author(name, birthYear, nationality) {
+            this.name = name;
+            this.birthYear = birthYear;
+            this.nationality = nationality;
+        }
+
+        function Book(title, author, genre, price) {
+            this.title = title;
+            this.author = author;
+            this.genre = genre;
+            this.price = price;
+        }
+
+        Book.prototype.getBookInfo = function() {
+            return `${this.title} by ${this.author.name} | Genre: ${this.genre} | Price: $${this.price}`;
+        };
+
+        const author1 = new Author("A P J Abdul Kalam, Arun Tiwari ",1931, "Indian");
+        const book1 = new Book("Wings of Fire", author1, "	Autobiography","₹384");
+
+        const author2 = new Author("Bharat Sundaresan",1985, "Indian");
+        const book2 = new Book("Think And Win Like Dhoni", author2, "Self-help book","₹199.00");
+
+        function displayBookInfo(book) {
+            const bookInfoContainer = document.createElement('div');
+            bookInfoContainer.className = 'book-info';
+            bookInfoContainer.textContent = book.getBookInfo();
+            document.body.appendChild(bookInfoContainer);
+        }
+
+        displayBookInfo(book1);
+        displayBookInfo(book2);
+    </script>
+</body>
+</html>
